@@ -37,12 +37,11 @@ const constructSummary = (rules: Rule[]) =>
     })
     .join('');
 
-const constructTotal = (rules: Rule[]) =>
-  chalk`${flames}  {red ${totalProblems(
-    rules,
-  )} problems in total} (${totalErrors(rules)} {red errors}, ${totalWarnings(
-    rules,
-  )} {yellow warnings})`;
+const constructTotal = (rules: Rule[]) => {
+  const totalCount = totalProblems(rules);
+  const formattedTotal = totalCount === 0 ? `${sparkles}  {green ${totalCount} problems in total}` : `${flames}  {red ${totalCount)} problems in total}`;
+  return chalk`${formattedTotal} (${totalErrors(rules)} {red errors}, ${totalWarnings(rules)} {yellow warnings})`;
+}
 
 type EnvVars = {
   SORT_BY?: 'rule' | 'errors' | 'warnings';
