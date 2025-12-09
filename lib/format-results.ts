@@ -39,7 +39,7 @@ const constructSummary = (rules: Rule[]) =>
 
 const constructTotal = (rules: Rule[]) => {
   const totalCount = totalProblems(rules);
-  const formattedTotal = totalCount === 0 ? `${sparkles}  {green ${totalCount} problems in total}` : `${flames}  {red ${totalCount)} problems in total}`;
+  const formattedTotal = totalCount === 0 ? `${sparkles}  {green ${totalCount} problems in total}` : `${flames}  {red ${totalCount} problems in total}`;
   return chalk`${formattedTotal} (${totalErrors(rules)} {red errors}, ${totalWarnings(rules)} {yellow warnings})`;
 }
 
